@@ -1,0 +1,20 @@
+---
+title: Все эвенты Москвы
+eleventyExcludeFromCollections: true
+---
+{% css %}
+ article { padding: 1rem; border: 1px solid grey; max-width: 600px; margin-bottom: 1rem }
+ article a { text-decoration: none; color: inherit }
+{% endcss %}
+<ul>
+{%- for post in collections.moscow -%}
+  <li>
+		<article>
+			<a href="{{ post.url }}">
+				<h1>{{ post.data.title }}</h1>
+				<p>{{ post.data.promo }}</p>
+			</a>
+		</article>
+	</li>
+{%- endfor -%}
+<ul>

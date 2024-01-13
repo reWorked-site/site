@@ -100,6 +100,9 @@ module.exports = function(eleventyConfig) {
 
 	// eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 
+	// Create Date Shortcut
+	eleventyConfig.addShortcode("today", () => `${new Date().toISOString().split('T', 1)[0]}`);
+
 	return {
 		// Control which files Eleventy will process
 		// e.g.: *.md, *.njk, *.html, *.liquid
