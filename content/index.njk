@@ -1,11 +1,13 @@
 ---
-layout: layouts/home.njk
-eleventyNavigation:
+layout: layouts/base.njk
+eleventyExcludeFromCollections: true
+---
+{# eleventyNavigation:
   key: Home
   order: 1
-numberOfLatestPostsToShow: 3
----
-{% set postsCount = collections.posts | length %}
+numberOfLatestPostsToShow: 3 #}
+
+{# {% set postsCount = collections.posts | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
 <h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1>
 
@@ -16,7 +18,7 @@ numberOfLatestPostsToShow: 3
 {% set morePosts = postsCount - numberOfLatestPostsToShow %}
 {% if morePosts > 0 %}
 <p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="/blog/">the archive</a>.</p>
-{% endif %}
+{% endif %} #}
 
 {# List every content page in the project #}
 {#
@@ -26,3 +28,33 @@ numberOfLatestPostsToShow: 3
 	{%- endfor %}
 </ul>
 #}
+
+<h1>Все эвенты</h1>
+
+<h2>в Москве</h2>
+<ul>
+{%- for post in collections.moscow -%}
+  <li>
+		<article>
+			<a href="{{ post.url }}">
+				<h1>{{ post.data.title }}</h1>
+				<p>{{ post.data.promo }}</p>
+			</a>
+		</article>
+	</li>
+{%- endfor -%}
+<ul>
+
+<h2>в Питере</h2>
+<ul>
+{%- for post in collections.piter -%}
+  <li>
+		<article>
+			<a href="{{ post.url }}">
+				<h1>{{ post.data.title }}</h1>
+				<p>{{ post.data.promo }}</p>
+			</a>
+		</article>
+	</li>
+{%- endfor -%}
+<ul>
